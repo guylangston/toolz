@@ -12,7 +12,7 @@ var argOne = args.Length > 0 && args.Any(x=>x == "-1");
 var lastDiff = "";
 var file = "";
 var ln = 0;
-var fileDiffs = new List<(string txt, int size)>();
+var fileDiffs = new List<DiffChunk>();
 while( Console.ReadLine() is {} line) 
 {
     ln++;
@@ -35,7 +35,7 @@ while( Console.ReadLine() is {} line)
             var size = int.Parse(ppsp[1]);
 
             var summary = line[(split+2)..];
-            fileDiffs.Add(($"{file}|{cln}| {psp[1]} => {summary}", size));
+            fileDiffs.Add(new DiffChunk(file, cln, size, summary));
         }
     }
     catch(Exception ex)
@@ -45,6 +45,7 @@ while( Console.ReadLine() is {} line)
     }
 }
 PushFileDiffs();
+return 0;
 
 void PushFileDiffs()
 {
@@ -52,14 +53,22 @@ void PushFileDiffs()
     {
         if (argOne)
         {
-            Console.WriteLine(fileDiffs.MaxBy(x=>x.size).txt);
+            var count = fileDiffs.Count;
+            Console.WriteLine(fileDiffs.MaxBy(x=>x.size).ToString(count > 1 ? $"[++{count}]" : ""));
         }
         else {
             foreach(var line in fileDiffs)
             {
-                Console.WriteLine(line.txt);
+                Console.WriteLine(line.ToString());
             }
         }
         fileDiffs.Clear();
     }
 }
+
+record DiffChunk(string file, int line, int size, string summary)
+{
+    public override string ToString() => $"{file}|{line}| [{size}] {summary}";
+    public string ToString(string prefix) => $"{file}|{line}| {prefix} [{size}] {summary}";
+};
+
