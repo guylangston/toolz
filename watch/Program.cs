@@ -1,7 +1,10 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 // args[0] = directory/file
 // args[1, optional = regex match (ignored if args[0] is file)
 
-using System.Text.RegularExpressions;
 var opts = args.Where(x=>x.StartsWith("-")).ToArray();
 var parms = args.Where(x=>!x.StartsWith("-")).ToArray();;
 var argsPath = parms.FirstOrDefault() ?? "./";
