@@ -1,6 +1,8 @@
 using System; // bflat
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 
 //Sample
 // diff --git a/src/Website.BackEnd/SignalR/Hubs/RfsHubImpl.cs b/src/Website.BackEnd/SignalR/Hubs/RfsHubImpl.cs
@@ -10,8 +12,12 @@ using System.Collections.Generic;
 // @@ -60,9 +59,12 @@ public class CancellableItemCache<TKey, TValue>
 // @@ -187,4 +189,4 @@ public class CancellableItemCache<TKey, TValue>
 //
+//
 
 var argOne = args.Length > 0 && args.Any(x=>x == "-1");
+var argReg = args.Length > 0 && args.Any(x=>x == "-rel");
+var gitRoot = argReg ? FindGitRoot(Environment.CurrentDirectory) ?? throw new Exception("git root") : "";
+Trace.WriteLine(gitRoot);
 
 var lastDiff = "";
 var file = "";
@@ -39,7 +45,14 @@ while( Console.ReadLine() is {} line)
             var size = int.Parse(ppsp[1]);
 
             var summary = line[(split+2)..];
-            fileDiffs.Add(new DiffChunk(file, cln, size, summary));
+            // TODO: make relative to current directory
+            var full = Path.Combine(gitRoot, file);
+            var fullInfo = new FileInfo(full);
+            Trace.WriteLine(fullInfo.FullName);
+            var fileFinal = argReg 
+                ?  Path.GetRelativePath(Environment.CurrentDirectory, fullInfo.FullName)
+                : fullInfo.FullName;
+            fileDiffs.Add(new DiffChunk(fileFinal, cln, size, summary));
         }
     }
     catch(Exception ex)
@@ -70,9 +83,17 @@ void PushFileDiffs()
     }
 }
 
+string? FindGitRoot(string dir)
+{
+    if (Directory.Exists(Path.Combine(dir, ".git"))) return dir;
+    var parent = Directory.GetParent(dir);
+    if (parent == null) return null;
+    return FindGitRoot(parent.FullName);
+}
+
 record DiffChunk(string file, int line, int size, string summary)
 {
     public override string ToString() => $"{file}|{line}| [{size}] {summary}";
     public string ToString(string prefix) => $"{file}|{line}| {prefix} [{size}] {summary}";
-};
+}
 
