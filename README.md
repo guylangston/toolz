@@ -8,6 +8,7 @@
 ## Implemented
 - [diff-summary](./diff-summary/README.md)
 - [watch](./watch/README.md)
+- spipe "string pipe" -- a bunch of little string parsing/formatting functions
 
 ## Ideas
 - Launcher: Run will additional flags (ProcessAffinity, ProcessPriority, Environment flags)
