@@ -6,26 +6,13 @@ using System.Collections.Generic;
 
 public static class Program
 {
-    // Try $env:shimexec = "nvim"; $env:shim1 = "--clean" ; ls | vim-shim.exe --
     public static int Main(string[] args)
     {
-        var shimExec = Environment.GetEnvironmentVariable("ShimExec");
-        if (shimExec == null)
-        {
-            Console.Error.WriteLine("Env:ShimExec missing");
-            return -1;
-        }
-
-        // TODO: Snip -> Console.WriteLine($"");
-        Console.WriteLine($" isIn: {Console.IsInputRedirected}");
-        Console.WriteLine($"isOut: {Console.IsOutputRedirected}");
-        Console.WriteLine($"isErr: {Console.IsErrorRedirected}");
-
-        var innerArgs = new List<string> { };
+        var shimExec = "nvim.exe";
+        var innerArgs = new List<string> { "--clean" };
         foreach(string key in Environment.GetEnvironmentVariables().Keys.Cast<string>().OrderBy(x=>x))
         {
             if (string.Equals(key, "ShimExe", StringComparison.OrdinalIgnoreCase)) continue;
-
             if (key.ToLower().StartsWith("shim"))
             {
                 var val = Environment.GetEnvironmentVariable(key.ToString());
@@ -52,8 +39,6 @@ public static class Program
                 {
                     while(Console.ReadLine() is {} line)
                     {
-                        // https://en.wikipedia.org/wiki/End-of-Transmission_character
-                        // if (line.Length == 1 && line[0] == 4 /* ^D */) break;
                         sw.WriteLine(line);
                         count++;
                     }
