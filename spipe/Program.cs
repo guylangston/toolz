@@ -65,19 +65,29 @@ internal class Program
         }
     }
 
-    private static void Main(string[] args)
+    private static int Main(string[] args)
     {
+        if (args.Length > 0 && args[0] == "echo")
+        {
+            while(Console.ReadLine() is {} line) 
+            {
+                Console.WriteLine(line);
+            }
+            return 0;
+        }
+
         if (args.Length > 1 && args[0] == "cols")
         {
             Cols(args[1]);
-            return;
+            return 0;
         }
         if (args.Length > 0 && args[0] == "js-import")
         {
             JsUsingsHackSort();
-            return;
+            return 0;
         }
 
-        Console.Error.WriteLine("unknown command: expected cols, js-import");
+        Console.Error.WriteLine("unknown command: expected cols, js-import, echo");
+        return -1;
     }
 }

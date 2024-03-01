@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
+// ❯ git show -2 | dotnet run
+
 //Sample
 // diff --git a/src/Website.BackEnd/SignalR/Hubs/RfsHubImpl.cs b/src/Website.BackEnd/SignalR/Hubs/RfsHubImpl.cs
 // @@ -35,8 +35,6 @@ using Microsoft.AspNetCore.SignalR;
