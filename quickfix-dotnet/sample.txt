@@ -1,0 +1,9 @@
+C:\git\guy\toolz\quickfix-dotnet\Program.cs(19,27): error CS0841: Cannot use local variable 'line' before it is declared [C:\git\guy\toolz\quickfix-dotnet\quickfix-dotnet.csproj]
+C:\git\guy\toolz\quickfix-dotnet\Program.cs(21,24): error CS0841: Cannot use local variable 'line' before it is declared [C:\git\guy\toolz\quickfix-dotnet\quickfix-dotnet.csproj]
+C:\git\guy\toolz\quickfix-dotnet\Program.cs(23,28): error CS0841: Cannot use local variable 'line' before it is declared [C:\git\guy\toolz\quickfix-dotnet\quickfix-dotnet.csproj]
+C:\git\guy\toolz\quickfix-dotnet\Program.cs(26,20): error CS0841: Cannot use local variable 'line' before it is declared [C:\git\guy\toolz\quickfix-dotnet\quickfix-dotnet.csproj]
+C:\git\guy\toolz\quickfix-dotnet\Program.cs(27,13): error CS0136: A local or parameter named 'line' cannot be declared in this scope because that name is used in an enclosing local scope to define a local or parameter [C:\git\guy\toolz\qu
+ickfix-dotnet\quickfix-dotnet.csproj]
+C:\git\guy\toolz\quickfix-dotnet\Program.cs(27,20): error CS0841: Cannot use local variable 'line' before it is declared [C:\git\guy\toolz\quickfix-dotnet\quickfix-dotnet.csproj]
+    0 Warning(s)
+    6 Error(s)
