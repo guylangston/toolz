@@ -10,25 +10,7 @@ public static class Program
     {
         var shimExec = "nvim.exe";
         var innerArgs = new List<string> { "--clean" };
-        foreach(string key in Environment.GetEnvironmentVariables().Keys.Cast<string>().OrderBy(x=>x))
-        {
-            if (string.Equals(key, "ShimExe", StringComparison.OrdinalIgnoreCase)) continue;
-            if (key.ToLower().StartsWith("shim"))
-            {
-                var val = Environment.GetEnvironmentVariable(key.ToString());
-                if (val != null)
-                {
-                    Console.WriteLine($"ShimArg: {key}={val}");
-                    innerArgs.Add(val);
-                }
-            }
-        }
-        foreach(var arg in args)
-        {
-            Console.WriteLine($"Arg: {arg}");
-            innerArgs.Add(arg);
-        }
-
+        innerArgs.AddRange(args);
         if (Console.IsInputRedirected)
         {
             var tmp = Path.GetTempFileName();
@@ -44,9 +26,8 @@ public static class Program
                     }
                 }
             }
-            innerArgs.Add(tmp);
+            innerArgs.Add(tmp);  // last arg in the temp file
         }
-
         var proc = Process.Start(shimExec, innerArgs.ToArray());
         proc.WaitForExit();
         return proc.ExitCode;
