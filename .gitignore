@@ -1,6 +1,7 @@
 *.exe
 *.pdb
 bflat/
+bflat.zip
 
 
 ## Ignore Visual Studio temporary files, build results, and

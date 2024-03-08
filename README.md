@@ -5,22 +5,20 @@
 - cross-platform
 - typically a small, single source file app
 
-## Get Started
+## TLDR; quick start
 
-Run `build.ps1` for each sub-project
+With dotnet 8.0 installed, run:\
+```
+./build-all.ps1
+```
 
-Or, use [bflat](https://github.com/bflattened/bflat/releases) by unziping into this directory as `./bflat`
-```
-mkdir ./bflat
-cd ./bflat
-7z x ../bflat.xxxxx.zip
-```
 ## Implemented
 - [diff-summary](./diff-summary/README.md) -- `git diff master | <convert-to-vimgrep-quickfix-format>` 
 - [watch](./watch/README.md) -- watch a path, the spawn a command for each file change event
 - `spipe` aka "string pipe" -- a bunch of little string parsing/formatting functions `stdin -> FUNC -> stdout`
 - `shim` -- use environment variables to add hidden args `xargs for env`
 - `vim` -- shim `vim <args>` => `nvim --clean <args>`
+- `quickfix-dotnet` -- dotnet build -> find and convert errors into nvim quickfix format. `dotnet build | quickfix-dotnet | nvim --`
 
-## Ideas
+## Ideas / TODO / Future work
 - Launcher: Run will additional flags (ProcessAffinity, ProcessPriority, Environment flags)
