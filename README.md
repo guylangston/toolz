@@ -20,5 +20,9 @@ With dotnet 8.0 installed, run:\
 - `vim` -- shim `vim <args>` => `nvim --clean <args>`
 - `quickfix-dotnet` -- dotnet build -> find and convert errors into nvim quickfix format. `dotnet build | quickfix-dotnet | nvim --`
 
+## Other tools (not build from this repo)
+ - https://github.com/KSXGitHub/strip-ansi-cli
+
+
 ## Ideas / TODO / Future work
 - Launcher: Run will additional flags (ProcessAffinity, ProcessPriority, Environment flags)
