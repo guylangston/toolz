@@ -34,7 +34,7 @@ internal class Program
 
     static void JsUsingsHackSort()
     {
-        bool FindFrom(string line, out string path) 
+        bool FindFrom(string line, out string path)
         {
             var idx = line.IndexOf("from");
             if (idx < 0)
@@ -69,7 +69,7 @@ internal class Program
     {
         if (args.Length > 0 && args[0] == "echo")
         {
-            while(Console.ReadLine() is {} line) 
+            while(Console.ReadLine() is {} line)
             {
                 Console.WriteLine(line);
             }
