@@ -65,6 +65,23 @@ internal class Program
         }
     }
 
+    static int ReformatNodeTscBuildLogs(string[] args)
+    {
+        const string prefix = "ERROR in ";
+        while (Console.ReadLine() is { } ln)
+        {
+            if (ln.StartsWith(prefix))
+            {
+                var next = Console.ReadLine();
+                Console.Write(ln[(prefix.Length)..]);
+                Console.Write(' ');
+                Console.WriteLine(next);
+            }
+        }
+
+        return 0;
+    }
+
     private static int Main(string[] args)
     {
         if (args.Length > 0 && args[0] == "echo")
@@ -86,8 +103,10 @@ internal class Program
             JsUsingsHackSort();
             return 0;
         }
+        if (args.Length > 0 && args[0] == "reformat-ts")
+            return ReformatNodeTscBuildLogs(args);
 
-        Console.Error.WriteLine("unknown command: expected cols, js-import, echo");
+        Console.Error.WriteLine("unknown command: expected cols, js-import, echo, reformat-ts");
         return -1;
     }
 }
