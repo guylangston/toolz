@@ -11,6 +11,8 @@ public static class Program
         var shimExec = "nvim.exe";
         var innerArgs = new List<string> { "--clean" };
         innerArgs.AddRange(args);
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.InputEncoding = System.Text.Encoding.UTF8;
         if (Console.IsInputRedirected)
         {
             var tmp = Path.GetTempFileName();
