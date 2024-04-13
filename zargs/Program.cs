@@ -42,9 +42,10 @@ internal class Program
             }
             else
             {
-                var inner = arg.Contains("_")
-                    ? arg.Replace("_", string.Join(" ", stdIn))
-                    : arg;
+                var inner = arg.Replace("__", string.Join(" ", stdIn))
+                    .Replace("_,", string.Join(",", stdIn))
+                    .Replace("_+", string.Join("+", stdIn))
+                    .Replace("_=", string.Join("=", stdIn));
                 resultArgs.Add(inner);
             }
         }
