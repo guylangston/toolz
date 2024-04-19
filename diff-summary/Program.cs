@@ -71,7 +71,7 @@ void PushFileDiffs()
         if (argOne)
         {
             var count = fileDiffs.Count;
-            Console.WriteLine(fileDiffs.MaxBy(x=>x.size).ToString(count > 1 ? $"[++{count}]" : ""));
+            Console.WriteLine(fileDiffs.MaxBy(x=>x.size).ToString(count > 1 ? $"ln, {count} hunks" : "ln"));
         }
         else {
             foreach(var line in fileDiffs)
@@ -94,6 +94,6 @@ string? FindGitRoot(string dir)
 record DiffChunk(string file, int line, int size, string summary)
 {
     public override string ToString() => $"{file}|{line}| [{size}] {summary}";
-    public string ToString(string prefix) => $"{file}|{line}| {prefix} [{size}] {summary}";
+    public string ToString(string suffix) => $"{file}|{line}| [{size}{suffix}] {summary}";
 }
 
