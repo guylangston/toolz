@@ -7,22 +7,30 @@ class Program
     public static int Main(string[] args)
     {
         var rel = args.Contains("-rel");
+        var list = new List<string>();
         while(Console.ReadLine() is {}line)
         {
-            ProcessLine(rel, line);
+            if (ProcessLine(rel, line) is {} match)
+            {
+                list.Add(match);
+            }
+        }
+        foreach(var line in list.Distinct().OrderBy(x=>x))
+        {
+            Console.WriteLine(line);
         }
         return 0;
     }
 
     // C:\git\guy\PiggyBack\src\PiggyBack.Launcher\Runner\ProcessRunnerClipboard.cs(15,39): error CS0535: 'ProcessRunnerClipboard' does not implement interface member 'IProcessRunner.Validate(RunnerCommandArg)' [C:\git\guy\PiggyBack\src\PiggyBack.Launcher\PiggyBack.Launcher.csproj]
-    public static void ProcessLine(bool rel, string line)
+    public static string? ProcessLine(bool rel, string line)
     {
         int idxPrenOpen = line.IndexOf('(');
-        if (idxPrenOpen < 0) return;
+        if (idxPrenOpen < 0) return null;
         int idxComma = line.IndexOf(',', idxPrenOpen);
-        if (idxComma < 0) return;
+        if (idxComma < 0) return null;
         int idxPrenClose = line.IndexOf(')', idxComma);
-        if (idxPrenClose < 0) return;
+        if (idxPrenClose < 0) return null;
 
         var path = line[..idxPrenOpen];
         var lineNo = line[(idxPrenOpen+1)..idxComma];
@@ -32,7 +40,7 @@ class Program
         var embelish = Embellish(path, lineNo, col, content);
         var polishPath = PolishPath(path, lineNo, col, content, rel);
 
-        Console.WriteLine($"{path}:{lineNo}:{col}: {embelish}");
+        return $"{path}:{lineNo}:{col}: {embelish}";
     }
 
     private static string PolishPath(string path, string lineNo, string col, string content, bool rel)

@@ -1,9 +1,17 @@
-C:\git\guy\toolz\quickfix-dotnet\Program.cs(19,27): error CS0841: Cannot use local variable 'line' before it is declared [C:\git\guy\toolz\quickfix-dotnet\quickfix-dotnet.csproj]
-C:\git\guy\toolz\quickfix-dotnet\Program.cs(21,24): error CS0841: Cannot use local variable 'line' before it is declared [C:\git\guy\toolz\quickfix-dotnet\quickfix-dotnet.csproj]
-C:\git\guy\toolz\quickfix-dotnet\Program.cs(23,28): error CS0841: Cannot use local variable 'line' before it is declared [C:\git\guy\toolz\quickfix-dotnet\quickfix-dotnet.csproj]
-C:\git\guy\toolz\quickfix-dotnet\Program.cs(26,20): error CS0841: Cannot use local variable 'line' before it is declared [C:\git\guy\toolz\quickfix-dotnet\quickfix-dotnet.csproj]
-C:\git\guy\toolz\quickfix-dotnet\Program.cs(27,13): error CS0136: A local or parameter named 'line' cannot be declared in this scope because that name is used in an enclosing local scope to define a local or parameter [C:\git\guy\toolz\qu
-ickfix-dotnet\quickfix-dotnet.csproj]
-C:\git\guy\toolz\quickfix-dotnet\Program.cs(27,20): error CS0841: Cannot use local variable 'line' before it is declared [C:\git\guy\toolz\quickfix-dotnet\quickfix-dotnet.csproj]
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  GL.Helpers -> /home/guy/repo/Rustlings/src/GL.Helpers/bin/Debug/net9.0/GL.Helpers.dll
+  GL.Helpers.AspNetCore -> /home/guy/repo/Rustlings/src/GL.Helpers.AspNetCore/bin/Debug/net9.0/GL.Helpers.AspNetCore.dll
+  PropZ -> /home/guy/repo/Rustlings/src/PropZ/bin/Debug/net9.0/PropZ.dll
+  PropZ.AspNetCore -> /home/guy/repo/Rustlings/src/PropZ.AspNetCore/bin/Debug/net9.0/PropZ.AspNetCore.dll
+  FileSystemZ -> /home/guy/repo/Rustlings/src/FileSystemZ/bin/Debug/net9.0/FileSystemZ.dll
+  pbp.core -> /home/guy/repo/pbp/src/pbp.core/bin/Debug/net9.0/pbp.core.dll
+/home/guy/repo/pbp/src/pbp.web/Views/Shared/_Layout.cshtml(41,54): error CS0117: 'UserHelper' does not contain a definition for 'Manager' [/home/guy/repo/pbp/src/pbp.web/pbp.web.csproj]
+
+Build FAILED.
+
+/home/guy/repo/pbp/src/pbp.web/Views/Shared/_Layout.cshtml(41,54): error CS0117: 'UserHelper' does not contain a definition for 'Manager' [/home/guy/repo/pbp/src/pbp.web/pbp.web.csproj]
     0 Warning(s)
-    6 Error(s)
+    1 Error(s)
+
+Time Elapsed 00:00:02.12

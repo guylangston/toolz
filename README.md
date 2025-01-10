@@ -7,6 +7,9 @@
 
 ## TLDR; quick start
 
+- Each sub-folder is a self-contained project.
+- Each project builds itself and places the results in `./bin`
+
 With dotnet 8.0 installed, run:\
 ```
 ./build-all.ps1
@@ -22,7 +25,6 @@ With dotnet 8.0 installed, run:\
 
 ## Extras: other tools (not build from this repo)
  - `strip-ansi`  https://github.com/KSXGitHub/strip-ansi-cli
-
 
 ## Ideas / TODO / Future work
 - Launcher: Run will additional flags (ProcessAffinity, ProcessPriority, Environment flags)
