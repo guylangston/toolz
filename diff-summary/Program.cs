@@ -14,7 +14,7 @@ using System.IO;
 // @@ -60,9 +59,12 @@ public class CancellableItemCache<TKey, TValue>
 // @@ -187,4 +189,4 @@ public class CancellableItemCache<TKey, TValue>
 
-var argOne = args.Length > 0 && args.Any(x=>x == "-1");   // one line per file (choose longest diff as line no)  
+var argOne = args.Length > 0 && args.Any(x=>x == "-1");   // one line per file (choose longest diff as line no)
 var argReg = args.Length > 0 && args.Any(x=>x == "-rel"); // rel to current dir vs (rel git root)
 var gitRoot = argReg ? FindGitRoot(Environment.CurrentDirectory) ?? throw new Exception("git root") : "";
 Trace.WriteLine(gitRoot);
@@ -23,7 +23,7 @@ var lastDiff = "";
 var file = "";
 var ln = 0;
 var fileDiffs = new List<DiffChunk>();
-while( Console.ReadLine() is {} line) 
+while( Console.ReadLine() is {} line)
 {
     ln++;
     try
@@ -49,7 +49,7 @@ while( Console.ReadLine() is {} line)
             var full = Path.Combine(gitRoot, file);
             var fullInfo = new FileInfo(full);
             Trace.WriteLine(fullInfo.FullName);
-            var fileFinal = argReg 
+            var fileFinal = argReg
                 ?  Path.GetRelativePath(Environment.CurrentDirectory, fullInfo.FullName)
                 : fullInfo.FullName;
             fileDiffs.Add(new DiffChunk(fileFinal, cln, size, summary));
@@ -66,7 +66,7 @@ return 0;
 
 void PushFileDiffs()
 {
-    if (fileDiffs.Any()) 
+    if (fileDiffs.Any())
     {
         if (argOne)
         {

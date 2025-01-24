@@ -8,7 +8,7 @@ class Program
     {
         var rel = args.Contains("-rel");
         var list = new List<string>();
-        while(Console.ReadLine() is {}line)
+        while(Console.ReadLine() is {} line)
         {
             if (ProcessLine(rel, line) is {} match)
             {
