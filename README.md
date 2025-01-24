@@ -29,3 +29,6 @@ With dotnet 8.0 installed, run:\
 ## Ideas / TODO / Future work
 - Launcher: Run will additional flags (ProcessAffinity, ProcessPriority, Environment flags)
     - `turtle` runs and sets priority to lowest, single core. Although very easily done with a pwsh script. TODO: Add example script
+
+# History / Log
+- 2025-01-10 rework for linux. using `./dist/` for bins so dir names don't clash
