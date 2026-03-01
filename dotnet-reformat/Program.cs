@@ -32,7 +32,6 @@ public static class Program
                 {
                     ScanFiles.ProcessInputAsFiles("./", argTest);
                 }
-                
                 return 0;
             }
 
